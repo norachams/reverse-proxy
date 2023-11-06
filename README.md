@@ -30,7 +30,7 @@ go build
 
 # in a separate terminal, test the proxy server and the original server using 
 curl localhost:8080
-#note: the 'request received' for the proxy is commented out on line 27
+#note: the 'received request' for the proxy is commented out on line 27
 #I commented it out so it doesn't flood the testing
 
 # to run the test run  
@@ -66,7 +66,7 @@ Prior to this project, I was new to HTTP reverse proxy development. I conducted 
 ## Design Decisions 
 
 **Functionality decision:** 
-When presented with three possible functionality options to implement, I made the decision to pursue the "Global In-flight Request Limit" because it personally appealed to me and offered an engaging coding and learning experience.
+When presented with three possible functionality options to implement, I made the decision to pursue the "Global In-flight Request Limit" because it appealed to me and offered an engaging coding and learning experience.
 
 **Global in-flight request limit implementation:**
 The reverse proxy server ```proxy.go``` has been designed to control the number of concurrent requests made to the origin server. It limits the concurrent requests to a maximum of 10 (this can be adjusted). 

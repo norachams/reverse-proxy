@@ -23,7 +23,7 @@ type Context struct {
 }
 
 func (c *Context) NewHandler(rw http.ResponseWriter, req *http.Request) {
-	//commented out so it doesnt flood the testing when testing it
+	//commented out so it doesnt flood the testing when running the test
 	//fmt.Printf("[reverse proxy server] received request at: %s\n", time.Now())
 	if c.currentConcurrentRequests >= NoOfConcurrentRequests {
 		rw.WriteHeader(http.StatusServiceUnavailable)
