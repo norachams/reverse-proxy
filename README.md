@@ -1,6 +1,6 @@
 ## Introduction
 This is a take-home test for Cohere to build an HTTP Reverse Proxy with a functionality implementation. 
-This is a Go-based application designed to act as an intermediary between client applications and origin servers. I decided to include middleware implementing the global in-flight request limit functionality, which restricts the number of concurrent requests to the origin server. The proxy will ensure that it does not exceed the specified limit. 
+This is a Go-based application designed to act as an intermediary between client applications and origin servers. I included the middleware implementation of the global in-flight request limit functionality, which restricts the number of concurrent requests to the origin server. The proxy will ensure that it does not exceed the specified limit. 
 ### What is a Reverse Proxy?
 An HTTP reverse proxy is a server that sits between client devices and backend web servers. It receives incoming requests from clients and forwards them to the appropriate backend server. 
 Reverse proxies are essential for load balancing, caching, security, and optimizing web application performance.
@@ -10,7 +10,7 @@ Reverse proxies are essential for load balancing, caching, security, and optimiz
 Before using the HTTP Reverse Proxy, ensure that you have the following prerequisites installed:
 - Go (Programming Language)
 - A running Go development environment
-- Knowledge of HTTP, proxies, and networking concepts [(or just use the resources I used to learn)](#resources)
+- Knowledge of HTTP, proxies, and networking concepts [(or just use the resources I used to learn)](#resources-used)
 
 ### Building and Running
 ```bash
@@ -26,13 +26,14 @@ go build
 # run the reverse-proxy
 ./reverse-proxy 
 # you should see the output
-'origin server listening on port 8080'
+'reverse proxy server listening on port 8080'
 
-# in another terminal try the following line to test the proxy server and original server 
+# in a separate terminal, test the proxy server and the original server using 
 curl localhost:8080
-#note: the 'request received' for the proxy is commented out on line 27, I commented it out so it doesn't flood the testing
+#note: the 'request received' for the proxy is commented out on line 27
+#I commented it out so it doesn't flood the testing
 
-# to test the functionality run the test 
+# to run the test run  
 go test -count=1 -v ./...
 ```
 
