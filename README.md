@@ -1,6 +1,5 @@
 ## Introduction
-This is a take-home test for Cohere to build an HTTP Reverse Proxy with a functionality implementation. 
-This is a Go-based application designed to act as an intermediary between client applications and origin servers. I included the middleware implementation of the global in-flight request limit functionality, which restricts the number of concurrent requests to the origin server. The proxy will ensure that it does not exceed the specified limit. 
+This is a take-home test for Cohere, involving the development of an HTTP Reverse Proxy with specific functionality. It's a Go-based application designed to serve as an intermediary between client applications and origin servers. Included is the implementation of middleware to enforce a global in-flight request limit, which ensures that the proxy never exceeds the defined maximum number of concurrent requests to the origin server.
 ### What is a Reverse Proxy?
 An HTTP reverse proxy is a server that sits between client devices and backend web servers. It receives incoming requests from clients and forwards them to the appropriate backend server. 
 Reverse proxies are essential for load balancing, caching, security, and optimizing web application performance.
@@ -141,9 +140,9 @@ const (
 
 # Future work: Scaling
 
-- **Sharded Rate Limiting:** As mentioned in the description as one of the possible functionalities to implement we can limit request rate. This entails tracking the number of requests from each IP address and, when it exceeds the limit, rejecting additional requests. The same concept applies to rate limiting based on header values. We can achieve this by increasing the count for each IP or header and decreasing it when the request is completed. 
+- **Sharded Rate Limiting:** As mentioned in the challenge description as one of the possible functionalities to implement we can limit the request rate. This entails tracking the number of requests from each IP address and, when it exceeds the limit, rejecting additional requests. The same concept applies to rate limiting based on header values. We can achieve this by increasing the count for each IP or header and decreasing it when the request is completed. 
 
-- **Request Retries:** Another functionality mentioned in the description as one of the options to implement is retries. We could implement a mechanism for request retries when the origin server responds with a status code greater than or equal to 500. A for loop can be used for retry attempts, with a predefined number of retries and time intervals. If a successful response is received, the loop terminates. Here's an example of retry logic:
+- **Request Retries:** Another functionality mentioned in the challenge description as one of the options to implement is retries. We could implement a mechanism for request retries when the origin server responds with a status code greater than or equal to 500. A for loop can be used for retry attempts, with a predefined number of retries and time intervals. If a successful response is received, the loop terminates. Here's an example of retry logic:
 
 ```go
 for retries := 0; retries < 5; retries++ {
