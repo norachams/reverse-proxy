@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"sync"
+	//"time"
 )
 
 const (
@@ -22,7 +23,8 @@ type Context struct {
 }
 
 func (c *Context) NewHandler(rw http.ResponseWriter, req *http.Request) {
-
+	//commented out so it doesnt flood the testing when testing it
+	//fmt.Printf("[reverse proxy server] received request at: %s\n", time.Now())
 	if c.currentConcurrentRequests >= NoOfConcurrentRequests {
 		rw.WriteHeader(http.StatusServiceUnavailable)
 		_, _ = fmt.Fprint(rw, "You have reached maximum concurrent requests. Please try again later.\n")
